@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TellMeLies : MonoBehaviour
 {
-    [SerializeField] GameObject nose;
     public int liesTold = 0;
 
+    [SerializeField] GameObject nose;
+    [SerializeField] Button button;
+    
     float xzNoseSize = 0.017f;
     float yNoseSizeScale = 0.02f;
     public float noseCenterCoef = 1.03f;
@@ -14,6 +17,13 @@ public class TellMeLies : MonoBehaviour
     float newNoseLength;
     Vector3 nosePosition;
     int noseExtensionClips = 50;
+
+    private void Start()
+    {
+        nose = gameObject;
+        button = GameObject.Find("Button").GetComponent<Button>();
+        button.onClick.AddListener(TellLies);
+    }
 
     public void TellLies()
     {
